@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+fileparser/dumpyoutube
+fileparser/dumpcommentsvideos
+Fileparser/output
