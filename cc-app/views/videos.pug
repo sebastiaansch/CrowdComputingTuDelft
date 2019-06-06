@@ -1,0 +1,13 @@
+extends layout
+
+block content
+
+    if videos.length
+        each video in videos 
+            iframe(type='text/html' width='640' height='390'
+                src='http://www.youtube.com/embed/'+ video.video_id+'?=1&origin=http://example.com'
+                frameborder='0')
+            div.container 
+                p=  video.video_id
+    else
+        p No videos yet :(
