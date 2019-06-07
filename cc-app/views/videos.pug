@@ -1,13 +1,26 @@
 extends layout
 
 block content
-
-    if videos.length
+    
+     if videos.length
+        //some random input to be able to send a value 
+        form(action="/videos" method="POST" class="classify")
+            input(
+            type="text"
+            value="text"
+            name ="foo"
+        )
+        input(
+        type="submit"
+        value="Submit1"
+        class="btn btn-lg btn-primary btn-block"
+        )
+       
         each video in videos 
             iframe(type='text/html' width='640' height='390'
                 src='http://www.youtube.com/embed/'+ video.video_id+'?=1&origin=http://example.com'
                 frameborder='0')
             div.container 
                 p=  video.video_id
-    else
+     else
         p No videos yet :(

@@ -17,6 +17,14 @@ const commentSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  Category1: {
+    type: String,
+    trim: true,
+  },
+  Category2: {
+    type: String,
+    trim: true,
+  },
 
 });
 

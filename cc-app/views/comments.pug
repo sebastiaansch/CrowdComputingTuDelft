@@ -3,6 +3,21 @@ extends layout
 block content
 
   if comments.length
+    form(action="/comments" method="POST" class="classify")
+          input(
+            type="text"
+            value="text"
+            name ="foo"
+           
+          )
+          
+          input(
+            type="submit"
+            value="Submit1"
+            class="btn btn-lg btn-primary btn-block"
+          )
+
+
     each comment in comments 
       iframe(type='text/html' width='640' height='390'
       src='http://www.youtube.com/embed/'+ comment.video_id+'?=1&origin=http://example.com'
@@ -11,6 +26,9 @@ block content
         p=  comment._id
         p=  comment.video_id
         p=  comment.text
+
+       
+         
           
   else
     p No registrations yet :(

@@ -11,6 +11,10 @@ mongoose.connection
       if (err) throw err;
       console.log(result);
     });
+    mongoose.connection.db.collection("videos").find({}).toArray(function(err, result) {
+      if (err) throw err;
+      console.log(result);
+    });
     mongoose.connection.db.listCollections().toArray(function(err, collInfos) {
       // collInfos is an array of collection info objects that look like:
       // { name: 'test', options: {} }

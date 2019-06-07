@@ -12,8 +12,14 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Index page' });
 });
 
-router.get('/videos',  (req, res) => {
-  VideoModel.findOne()
+router.get('/videos',  (req, res) => { 
+  //search by some random value to get few videos
+  VideoModel.find({video_views: 43874 },function(err,data){
+    if(err){
+      console.log(err)
+    }
+    console.log(data)
+  })
   .then((videos) => {
     console.log(videos)
     res.render('videos', { title: 'Listing videos', videos });
@@ -38,8 +44,31 @@ router.get('/comments',  (req, res) => {
     .catch(() => { res.send('Sorry! Something went wrong.'); });
 });
 
+router.post('/comments', (req, res) => {
 
+  console.log(res.body)
+  console.log(req.body)
+  console.log('hallo post')
 
+  res.render('./', {
+    title: 'index page',
+  });
+ 
+
+})
+
+router.post('/videos', (req, res) => {
+ 
+  console.log(res.body)
+  console.log(req.body)
+  console.log('hallo post')
+
+  res.render('./', {
+    title: 'index page',
+  });
+ 
+
+})
 
 
 module.exports = router;
