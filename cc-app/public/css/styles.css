@@ -58,3 +58,311 @@ body {
   .listing-table th:first-child {
     border-right: 1px solid #666;
   }
+
+
+  
+
+  #person1 {
+   
+    visibility:hidden;
+  }
+  #personArtist1 {
+    
+    visibility:hidden;
+  }
+  #music1{
+    
+    visibility:hidden;
+  }
+  #musicPiece1 {
+    
+    visibility:hidden;
+  }
+  #musicInterpretation1 {
+   
+    visibility:hidden;
+  }
+  #consumption1 {
+
+    visibility:hidden;
+  }
+  #consumptionUser1 {
+ 
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated1 {
+   
+    visibility:hidden;
+  }
+  #consumptionMedia1 {
+    
+    visibility:hidden;
+  }
+
+
+
+
+
+
+
+
+  
+  #person2 {
+    visibility:hidden;
+  }
+  #personArtist2 {
+    visibility:hidden;
+  }
+  #music2{
+    visibility:hidden;
+  }
+  #musicPiece2 {
+    visibility:hidden;
+  }
+  #musicInterpretation2 {
+    visibility:hidden;
+  }
+  #consumption2 {
+    visibility:hidden;
+  }
+  #consumptionUser2 {
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated2 {
+    visibility:hidden;
+  }
+  #consumptionMedia2 {
+    visibility:hidden;
+  }
+
+  
+  #person3 {
+    visibility:hidden;
+  }
+  #personArtist3 {
+    visibility:hidden;
+  }
+  #music3{
+    visibility:hidden;
+  }
+  #musicPiece3 {
+    visibility:hidden;
+  }
+  #musicInterpretation3 {
+    visibility:hidden;
+  }
+  #consumption3 {
+    visibility:hidden;
+  }
+  #consumptionUser3 {
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated3 {
+    visibility:hidden;
+  }
+  #consumptionMedia3 {
+    visibility:hidden;
+  }
+
+  
+  #person4 {
+    visibility:hidden;
+  }
+  #personArtist4 {
+    visibility:hidden;
+  }
+  #music4{
+    visibility:hidden;
+  }
+  #musicPiece4 {
+    visibility:hidden;
+  }
+  #musicInterpretation4 {
+    visibility:hidden;
+  }
+  #consumption4 {
+    visibility:hidden;
+  }
+  #consumptionUser4 {
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated4 {
+    visibility:hidden;
+  }
+  #consumptionMedia4 {
+    visibility:hidden;
+  }
+
+  
+  #person5 {
+    visibility:hidden;
+  }
+  #personArtist5 {
+    visibility:hidden;
+  }
+  #music5{
+    visibility:hidden;
+  }
+  #musicPiece5 {
+    visibility:hidden;
+  }
+  #musicInterpretation5 {
+    visibility:hidden;
+  }
+  #consumption5 {
+    visibility:hidden;
+  }
+  #consumptionUser5 {
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated5 {
+    visibility:hidden;
+  }
+  #consumptionMedia5 {
+    visibility:hidden;
+  }
+
+  
+  #person6 {
+    visibility:hidden;
+  }
+  #personArtist6 {
+    visibility:hidden;
+  }
+  #music6{
+    visibility:hidden;
+  }
+  #musicPiece6 {
+    visibility:hidden;
+  }
+  #musicInterpretation6 {
+    visibility:hidden;
+  }
+  #consumption6 {
+    visibility:hidden;
+  }
+  #consumptionUser6 {
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated6 {
+    visibility:hidden;
+  }
+  #consumptionMedia6 {
+    visibility:hidden;
+  }
+
+  
+  #person7 {
+    visibility:hidden;
+  }
+  #personArtist7 {
+    visibility:hidden;
+  }
+  #music7{
+    visibility:hidden;
+  }
+  #musicPiece7 {
+    visibility:hidden;
+  }
+  #musicInterpretation7 {
+    visibility:hidden;
+  }
+  #consumption7 {
+    visibility:hidden;
+  }
+  #consumptionUser7 {
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated7 {
+    visibility:hidden;
+  }
+  #consumptionMedia7 {
+    visibility:hidden;
+  }
+
+  
+  #person8 {
+    visibility:hidden;
+  }
+  #personArtist8 {
+    visibility:hidden;
+  }
+  #music8{
+    visibility:hidden;
+  }
+  #musicPiece8 {
+    visibility:hidden;
+  }
+  #musicInterpretation8 {
+    visibility:hidden;
+  }
+  #consumption8 {
+    visibility:hidden;
+  }
+  #consumptionUser8 {
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated8 {
+    visibility:hidden;
+  }
+  #consumptionMedia8 {
+    visibility:hidden;
+  }
+
+  
+  #person9 {
+    visibility:hidden;
+  }
+  #personArtist9 {
+    visibility:hidden;
+  }
+  #music9{
+    visibility:hidden;
+  }
+  #musicPiece9 {
+    visibility:hidden;
+  }
+  #musicInterpretation9 {
+    visibility:hidden;
+  }
+  #consumption9 {
+    visibility:hidden;
+  }
+  #consumptionUser9 {
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated9 {
+    visibility:hidden;
+  }
+  #consumptionMedia9 {
+    visibility:hidden;
+  }
+
+  
+  #person10 {
+    visibility:hidden;
+  }
+  #personArtist10 {
+    visibility:hidden;
+  }
+  #music10{
+    visibility:hidden;
+  }
+  #musicPiece10 {
+    visibility:hidden;
+  }
+  #musicInterpretation10 {
+    visibility:hidden;
+  }
+  #consumption10 {
+    visibility:hidden;
+  }
+  #consumptionUser10 {
+    visibility:hidden;
+  }
+  #consumptionPlatformRelated10 {
+    visibility:hidden;
+  }
+  #consumptionMedia10 {
+    visibility:hidden;
+  }

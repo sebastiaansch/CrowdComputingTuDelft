@@ -5,6 +5,10 @@ const commentSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  cid: {
+    type: String,
+    trim: true,
+  },
   text: {
     type: String,
     trim: true,
@@ -17,14 +21,11 @@ const commentSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  Category1: {
+  annotation1: {
     type: String,
     trim: true,
   },
-  Category2: {
-    type: String,
-    trim: true,
-  },
+ 
 
 });
 
