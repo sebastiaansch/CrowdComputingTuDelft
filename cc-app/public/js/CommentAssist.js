@@ -100,6 +100,7 @@ function personFunction(val,elem) {
     }
     
     //hide irrelevant
+    /*
     document.getElementById("music"+count).style.visibility="hidden"
     document.getElementById("musicInterpretation"+count).style.visibility="hidden"
     document.getElementById("musicPiece"+count).style.visibility="hidden"
@@ -107,7 +108,7 @@ function personFunction(val,elem) {
     document.getElementById("consumptionUser"+count).style.visibility="hidden"
     document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
-
+    */
     if (val =='person user'){
         document.getElementById("personArtist"+count).style.visibility="hidden"
 
@@ -202,13 +203,14 @@ function musicFunction(val,elem) {
 
 
     //hide irrelevant
+    /*
     document.getElementById("person"+count).style.visibility="hidden"
     document.getElementById("personArtist"+count).style.visibility="hidden"
     document.getElementById("consumption"+count).style.visibility="hidden"
     document.getElementById("consumptionUser"+count).style.visibility="hidden"
     document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
-    
+    */
     if (val =='music piece'){
         document.getElementById("musicPiece"+count).style.visibility="visible"
         document.getElementById("musicInterpretation"+count).style.visibility="hidden"
@@ -291,12 +293,13 @@ function consumptionFunction(val,elem) {
   
     
     //hide irrelevant
+    /*
     document.getElementById("person"+count).style.visibility="hidden"
     document.getElementById("personArtist"+count).style.visibility="hidden"
     document.getElementById("music"+count).style.visibility="hidden"
     document.getElementById("musicInterpretation"+count).style.visibility="hidden"
     document.getElementById("musicPiece"+count).style.visibility="hidden"
-    
+    */
     if (val =='consumption userContext'){
         document.getElementById("consumptionUser"+count).style.visibility="hidden"
         document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
@@ -430,6 +433,7 @@ function nonRelatedFunction(val,elem) {
 
     //show relevant
     //hide irrelevant
+    /*
     document.getElementById("person"+count).style.visibility="hidden"
     document.getElementById("personArtist"+count).style.visibility="hidden"
     document.getElementById("music"+count).style.visibility="hidden"
@@ -439,6 +443,7 @@ function nonRelatedFunction(val,elem) {
     document.getElementById("consumptionUser"+count).style.visibility="hidden"
     document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
+    */
     if (val =='non related'){
         document.getElementById("person"+count).style.visibility="hidden"
         document.getElementById("personArtist"+count).style.visibility="hidden"    
@@ -458,7 +463,7 @@ function PostFuntion(){
     console.log("í submit")
 
     var xhr = new XMLHttpRequest();
-        xhr.open("POST", '/comments', true);
+        xhr.open("POST", '/commentsCateg', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({
             chosen

@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Index page' });
 });
 
-router.get('/videos',  (req, res) => { 
+router.get('/videosRelevance',  (req, res) => { 
   //search by some random value to get few videos
   VideoModel.find({video_views: 43874 },function(err,data){
     if(err){
@@ -32,7 +32,7 @@ router.get('/videos',  (req, res) => {
 
 
 
-router.get('/comments',  (req, res) => {
+router.get('/commentsCateg',  (req, res) => {
   //CommentModel.find()
   CommentModel.find({annotation_group_id: 30 },function(err,data){
     if(err){
@@ -47,7 +47,7 @@ router.get('/comments',  (req, res) => {
     .catch(() => { res.send('Sorry! Something went wrong.'); });
 });
 
-router.post('/comments', (req, res) => {
+router.post('/commentsCateg', (req, res) => {
   var data = req.body
  
   for(count=1;count<11;count++){
@@ -58,12 +58,12 @@ router.post('/comments', (req, res) => {
     console.log('Value: '+value)
     if (value != undefined){
       console.log('uppfæra')
-       /*
+       
       CommentModel.findOneAndUpdate({cid: id}, {annotation1: value},function(err,data) {
         console.log("Hello there!!");
         console.log(data)
       }) 
-      */
+      
     }
    
   }

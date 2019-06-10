@@ -59,6 +59,12 @@ body {
     border-right: 1px solid #666;
   }
 
+  #consumptionDiv{
+    background-color:#e3e3e3;
+  }
+  #personDiv{
+    background-color:#e3e3e3;
+  }
 
   
 

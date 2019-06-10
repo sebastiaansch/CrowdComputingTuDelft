@@ -3,12 +3,29 @@ extends layout
 block content
 
     a(
-        href="/comments"
-         class="btn btn-lg btn-primary btn-block"
-        ): button(type="button") Comments
-
+        href="/commentsCateg",
+        class="btn btn-lg btn-success btn-block",
+        role="button"
+        ) Comments Categorization
     a(
-        href="/videos"
-        class="btn btn-lg btn-primary btn-block"
-        ): button(type="button") Videos
+        href="/commentsJoke"
+         class="btn btn-lg btn-success btn-block"
+     
+        ) Comments-joke
+    a(
+        href="/commentsOpinion"
+         class="btn btn-lg btn-success btn-block"
+         
+        ) Comments-opinion
+    <br>
+    <br>
+    a(
+        href="/videosRelevance"
+        class="btn btn-lg btn-success btn-block"
+    
+        ) Videos-relevance
+    a(
+        href="/videosLive"
+        class="btn btn-lg btn-success btn-block"
+        ) Videos-live
 
