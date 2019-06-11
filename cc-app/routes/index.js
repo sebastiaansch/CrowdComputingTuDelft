@@ -32,7 +32,7 @@ router.get('/videosRelevance',  (req, res) => {
 
 
 
-router.get('/commentsCateg',  (req, res) => {
+router.get('/commentscateg',  (req, res) => {
   //CommentModel.find()
   CommentModel.find({annotation_group_id: 30 },function(err,data){
     if(err){
@@ -47,7 +47,7 @@ router.get('/commentsCateg',  (req, res) => {
     .catch(() => { res.send('Sorry! Something went wrong.'); });
 });
 
-router.post('/commentsCateg', (req, res) => {
+router.post('/commentscateg', (req, res) => {
   var data = req.body
  
   for(count=1;count<11;count++){
@@ -72,6 +72,87 @@ router.post('/commentsCateg', (req, res) => {
   });
 
 
+})
+
+router.get('/commentsjoke',  (req, res) => {
+  //CommentModel.find()
+  CommentModel.find({annotation_group_id: 30 },function(err,data){
+    if(err){
+      console.log(err)
+    }
+    //console.log(data)
+  })
+  .then((comments) => {
+    //console.log(comments)
+    res.render('commentsJoke', { title: 'Listing comments', comments });
+  })
+    .catch(() => { res.send('Sorry! Something went wrong.'); });
+});
+
+router.post('/commentsjoke', (req, res) => {
+  var data = req.body
+ /*
+  for(count=1;count<11;count++){
+    var id = data['chosen'][count][0]
+    console.log('ID: '+id)
+
+    var value = data['chosen'][count][1]
+    console.log('Value: '+value)
+    if (value != undefined){
+      console.log('uppfæra')
+       
+      CommentModel.findOneAndUpdate({cid: id}, {annotation1: value},function(err,data) {
+        console.log("Hello there!!");
+        console.log(data)
+      }) 
+      
+    }
+  
+  }
+  */  
+  res.render('./', {
+    title: 'index page',
+  });
+})
+router.get('/commentsopinion',  (req, res) => {
+  //CommentModel.find()
+  CommentModel.find({annotation_group_id: 30 },function(err,data){
+    if(err){
+      console.log(err)
+    }
+    //console.log(data)
+  })
+  .then((comments) => {
+    //console.log(comments)
+    res.render('commentsopinion', { title: 'Listing comments', comments });
+  })
+    .catch(() => { res.send('Sorry! Something went wrong.'); });
+});
+
+router.post('/commentsopinion', (req, res) => {
+  var data = req.body
+ /*
+  for(count=1;count<11;count++){
+    var id = data['chosen'][count][0]
+    console.log('ID: '+id)
+
+    var value = data['chosen'][count][1]
+    console.log('Value: '+value)
+    if (value != undefined){
+      console.log('uppfæra')
+       
+      CommentModel.findOneAndUpdate({cid: id}, {annotation1: value},function(err,data) {
+        console.log("Hello there!!");
+        console.log(data)
+      }) 
+      
+    }
+  
+  }
+  */  
+  res.render('./', {
+    title: 'index page',
+  });
 })
 
 router.post('/videos', (req, res) => {
