@@ -57,12 +57,9 @@ for(count=1;count<11;count++){
     //nonRelated
     document.getElementById("nonRelatedPick"+count).addEventListener("click",(elem) =>nonRelatedFunction('nonRelated',elem))
 
-    //buttons
-};
+   };
 document.getElementById("submitButton").addEventListener("click",(elem) => PostFuntion());
- console.log(html)
 
-console.log(chosen);
 
 function commentInfofunction(elem){
     count = elem.target.id.match(/\d+/)[0] // "3"
@@ -495,4 +492,5 @@ function PostFuntion(){
        */   
 
 }
+
 

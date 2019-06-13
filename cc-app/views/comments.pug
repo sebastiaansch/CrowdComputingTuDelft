@@ -10,15 +10,18 @@ block content
     each comment in comments 
       -counter+=1
       
+      p.h4 Task #{counter}
+      
       iframe(type='text/html' width='640' height='390'
       src='http://www.youtube.com/embed/'+ comment.video_id+'?=1&origin=http://example.com'
       frameborder='0')
       div.container(id ="commentInfo"+counter) 
+        p.h6 Comment can be read here below:
         p(id =comment.cid)
-        p=  comment.text
+        p(class="greytext") #{comment.text}
 
       
-      p Top Categories
+      p.h6 Top Categories
       div.row(id="mainDiv)") 
         div(class ="col", id ='personDiv')
           input(type="button",  value="Person",id="personPick" + counter,class="btn btn-light") 
@@ -136,5 +139,8 @@ block content
   script
     console.log(document.maleClick)
     console.log(document.getElementById('test1'.innerText))
+
+
+  script(src="/js/CommentAssist.js")
  
     

@@ -9,22 +9,22 @@ block content
     -var counter=0
     each comment in comments 
       -counter+=1
+      p.h4 Task #{counter}
       
       iframe(type='text/html' width='640' height='390'
       src='http://www.youtube.com/embed/'+ comment.video_id+'?=1&origin=http://example.com'
       frameborder='0')
       div.container(id ="commentInfo"+counter) 
-        p Comment can be read here below:
+        p.h6 Comment can be read here below:
         p(id =comment.cid)
-        p=  comment.text
-        p Question
-            div.row(id="mainDiv)") 
-            input(type="button",  value="Opinion",id="joke" + counter,class="btn btn-light") 
-            |  
+        p(class="greytext") #{comment.text}
+        p.h6 Question
+        input(type="button",  value="Opinion",id="opinion" + counter,class="btn btn-light") 
+        |  
 
-            input(type="button",  value="Not Opinion",id="noJoke" + counter,class="btn btn-light") 
-            |
-
+        input(type="button",  value="Not Opinion",id="noopinion" + counter,class="btn btn-light") 
+        | 
+      <br>
   
     //some random input to be able to send a value 
 
@@ -51,8 +51,6 @@ block content
   else
     p No registrations yet :(
 
-  script
-    console.log(document.maleClick)
-    console.log(document.getElementById('test1'.innerText))
  
-    
+ 
+  script(src="/js/commentOpinionAssist.js")
