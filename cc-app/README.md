@@ -4,23 +4,53 @@
 * [MongoDB](https://www.mongodb.com/)
 * [MongoDB Compass](https://www.mongodb.com/products/compass) (optional)
 
-## Installation Steps
+## Install the right dependencies
+Once you've cloned the repository, you can install the necessary dependencies by being in the *cc-app* folder and running :  
+```shell
+npm install
+```
 
-1. Clone repo
-2. Run `npm install`
-3. Create a `.env` file in the project root with database connection details
-4. Start MongoDB (using `mongod`) if running locally
-5. Run `npm run watch`
-6. Visit http://localhost:3000 for index page
-7. Visit http://localhost:3000/comments for comments
-8. Visit http://localhost:3000/videos for video
+## Creation of the .env file
+We need to have a file that will hold information to connect to the database. In the directory *cc-app*, create a file called **.env** and add the following line in it:  
+```
+DATABASE=mongodb://localhost:27017/youtube
+```
+
+where *youtube* is the name of your database.
+
+## Launch the database
+We now launch the database by running :
+
+```shell
+mongod --dbpath /path/to/where/the/data/will/be/stored
+```
+
+Be careful, the path where the data will be stored should already exist. It will not be created.
 
 
-## I have created three new fields in my local database in the comments collection.
+## Before launching the server, some changes need to be done in the database (it can be quite long be careful)
+### First, we need to create the fields that will be used by launching these command in the mongo shell environment.
+db.comments.update( {}, {$set:{"annotation_group_id":0}}, false, true)  
+db.comments.update( {}, {$set:{"annotation_done":0}}, false, true)  
+db.comments.update( {}, {$set:{"annotation1":0}}, false, true)  
+db.videos.update( {}, {$set:{"annotation1":0}}, false, true)  
 
-db.comments.update( {}, {$set:{"annotation_group_id":0}}, false, true)
-db.comments.update( {}, {$set:{"annotation_done":0}}, false, true)
-db.comments.update( {}, {$set:{"annotation1":0}}, false, true)
+### Then we update these new fields
+This is done by launching the mongo.js file with the following commands (assuming that you've run `npm install` before) :  
 
-## mongo.js
-then I updated the annotation_group and grouped 10 and 10 together.. needs to be thought through since all the comments that are grouped together now are of the same video.
+```shell
+node mongo.js
+```
+
+These will group the comments together in group of 10 per videos and it will create random batch of 10 videos to be used in the app. **These operations takes time since we modified the entire database**
+
+## Run the web server
+Now that the database is ready, we can run the web server by using the following command :  
+
+```shell
+npm run watch
+```
+
+## Access the website
+You can access the index page of the different task here : http://localhost:3000
+
