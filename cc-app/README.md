@@ -27,6 +27,12 @@ mongod --dbpath /path/to/where/the/data/will/be/stored
 
 Be careful, the path where the data will be stored should already exist. It will not be created.
 
+## Restoring the data from a dump
+We now need to filled the empty databse with data. To do so you need to have a dump of the database then run the command :
+```shell
+mongorestore path/to/dump
+```
+
 
 ## Before launching the server, some changes need to be done in the database (it can be quite long be careful)
 ### First, we need to create the fields that will be used by launching these command in the mongo shell environment.
