@@ -3,7 +3,8 @@ const bodyParser = require('body-parser')
 const express = require('express');
 const mongoose = require('mongoose');
 const auth = require('http-auth');
-const await = require('await')
+//const await = require('await')
+var async = require('async');
 const { body, validationResult } = require('express-validator/check');
 
 const router = express();
@@ -48,40 +49,44 @@ router.get('/commentscateg',  (req, res) => {
     .catch(() => { res.send('Sorry! Something went wrong.'); });
 });
 
-router.post('/commentscateg', (req, res) => {
+router.post('/commentscateg', async (req, res) => {
   console.log("í post aðgerð")
-  var data = req.body
-    console.log(data)
+  var request = req.body
+    console.log(request)
  
   for(count=1;count<11;count++){
-    var id = data['chosen'][count][0]
+    var id = request['chosen'][count][0]
     console.log('ID: '+id)
 
-    var value = data['chosen'][count][1][1] +" & "+data['chosen'][count][1][2]+" & "+data['chosen'][count][1][3]+" & "+data['chosen'][count][1][4]
+    var value = request['chosen'][count][1][1] +" & "+request['chosen'][count][1][2]+" & "+request['chosen'][count][1][3]+" & "+request['chosen'][count][1][4]
     console.log('Value: '+value)
-    console.log(data['chosen'][count][1]=="[]" )
+    console.log(request['chosen'][count][1]=="[]" )
     if (value != "undefined & undefined & undefined & undefined"){
-      console.log('uppfæra')
       noAnnotations=0
-      CommentModel.findOne({cid: id}, function (err, comment) {
-        if(err){
-          console.log('error')
-        } else{
-          noAnnotations=Object.keys(comment.category_annotations).length
-          newField ="category_annotations."+String(noAnnotations+1)
-          var myquery =  {$set:{[newField]:value} }
-         
-          CommentModel.findOneAndUpdate({cid: id}, myquery ,function(err,data) {
-            if(err){
+      
+      var myPromise = () => {return new Promise((resolve, reject) => {
+        CommentModel.findOne({cid: id}, function (err, comment) {
+          if(err){
             console.log('error')
           } else{
-            console.log(data)
+            noAnnotations=Object.keys(comment.category_annotations).length
+            newField ="category_annotations."+String(noAnnotations+1)
+            var myquery =  {$set:{[newField]:value} }
+          
+            CommentModel.findOneAndUpdate({cid: id}, myquery ,function(err,data) {
+              if(err){
+              console.log('error')
+            } else{
+              console.log(data)
+            }
+            }) 
           }
-          }) 
-        }
-      });
+        });
+      })
     }
-  }
+     var result = await myPromise()
+    }
+    }
   res.render('./', {
     title: 'index page',
   });
@@ -104,7 +109,7 @@ router.get('/commentsjoke',  (req, res) => {
     .catch(() => { res.send('Sorry! Something went wrong.'); });
 });
 
-router.post('/commentsjoke', (req, res) => {
+router.post('/commentsjoke',async (req, res) => {
   console.log("joke - post")
   var data = req.body
     console.log(data)
@@ -116,27 +121,28 @@ router.post('/commentsjoke', (req, res) => {
     var value = data['chosen'][count][1]
     console.log('Value: '+value)
     if (value != undefined){
-      console.log('uppfæra')
       noAnnotations=0
-      
-      CommentModel.findOne({cid: id}, function (err, comment) {
-        if(err){
-          console.log('error')
-        } else{
-          noAnnotations=Object.keys(comment.joke_annotations).length
-          newField ="joke_annotations."+String(noAnnotations+1)
-          var myquery =  {$set:{[newField]:value} }
-         
-          CommentModel.findOneAndUpdate({cid: id}, myquery ,function(err,data) {
-            if(err){
+      var myPromise = () => {return new Promise((resolve, reject) => {
+        CommentModel.findOne({cid: id}, function (err, comment) {
+          if(err){
             console.log('error')
           } else{
-            console.log(data)
-          }
+            noAnnotations=Object.keys(comment.joke_annotations).length
+            newField ="joke_annotations."+String(noAnnotations+1)
+            var myquery =  {$set:{[newField]:value} }
+          
+            CommentModel.findOneAndUpdate({cid: id}, myquery ,function(err,data) {
+              if(err){
+              console.log('error')
+            } else{
+              console.log(data)
+            }
           }) 
         }
       });
-      
+    })
+    }
+    var result = await myPromise() 
     }
   }
   res.render('./', {
@@ -158,10 +164,8 @@ router.get('/commentsopinion',  (req, res) => {
     .catch(() => { res.send('Sorry! Something went wrong.'); });
 });
 
-router.post('/commentsopinion', (req, res) => {
-  console.log("joke - post")
+router.post('/commentsopinion', async (req, res) => {
   var data = req.body
-    console.log(data)
  
   for(count=1;count<11;count++){
     var id = data['chosen'][count][0]
@@ -170,27 +174,28 @@ router.post('/commentsopinion', (req, res) => {
     var value = data['chosen'][count][1]
     console.log('Value: '+value)
     if (value != undefined){
-      console.log('uppfæra')
       noAnnotations=0
-      
-      CommentModel.findOne({cid: id}, function (err, comment) {
-        if(err){
-          console.log('error')
-        } else{
-          noAnnotations=Object.keys(comment.opinion_annotations).length
-          newField ="opinion_annotations."+String(noAnnotations+1)
-          var myquery =  {$set:{[newField]:value} }
-         
-          CommentModel.findOneAndUpdate({cid: id}, myquery ,function(err,data) {
-            if(err){
+      var myPromise = () => {return new Promise((resolve, reject) => {
+        CommentModel.findOne({cid: id}, function (err, comment) {
+          if(err){
             console.log('error')
           } else{
-            console.log(data)
-          }
+            noAnnotations=Object.keys(comment.opinion_annotations).length
+            newField ="opinion_annotations."+String(noAnnotations+1)
+            var myquery =  {$set:{[newField]:value} }
+          
+            CommentModel.findOneAndUpdate({cid: id}, myquery ,function(err,data) {
+              if(err){
+              console.log('error')
+            } else{
+              console.log(data)
+            }
           }) 
         }
       });
-      
+    })
+    }
+    var result = await myPromise()   
     }
   }
   res.render('./', {
