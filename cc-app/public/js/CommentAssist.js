@@ -5,8 +5,10 @@ for(count=1;count<11;count++){
     var divobj =document.getElementById("commentInfo"+count)
     var ps = divobj.getElementsByTagName('p')
     var commentid = ps[0]
+    //insert the cid into the chosen object so it cn be used in the post function and update correct document
+    chosen[count][0]=ps[1].id
+    chosen[count][1]=[]
 
-    chosen[count][0]=ps[0].id
 
     //buttons
     //person
@@ -60,16 +62,16 @@ for(count=1;count<11;count++){
    };
 document.getElementById("submitButton").addEventListener("click",(elem) => PostFuntion());
 
-
+/*
 function commentInfofunction(elem){
     count = elem.target.id.match(/\d+/)[0] // "3"
     chosen[count][1]=elem.target.id
     console(elem)
 }
-
+*/
 function personFunction(val,elem) {
     count = elem.target.id.match(/\d+/)[0] // "3"
-    chosen[count][1] = val
+    chosen[count][1][1] = val
     
     doc =document.getElementById(elem.target.id);
 
@@ -172,7 +174,7 @@ function personFunction(val,elem) {
 
 function musicFunction(val,elem) {
     count = elem.target.id.match(/\d+/)[0] // "3"
-    chosen[count][1] = val
+    chosen[count][1][2] = val
     doc =document.getElementById(elem.target.id);
     
     //show relevant
@@ -258,7 +260,7 @@ function musicFunction(val,elem) {
 
 function consumptionFunction(val,elem) {
     count = elem.target.id.match(/\d+/)[0] // "3"
-    chosen[count][1] = val
+    chosen[count][1][3] = val
     doc =document.getElementById(elem.target.id);
     //show relevant
     document.getElementById("consumption"+count).style.visibility="visible"
@@ -417,7 +419,7 @@ function consumptionFunction(val,elem) {
 
 function nonRelatedFunction(val,elem) {
     count = elem.target.id.match(/\d+/)[0] // "3"
-    chosen[count][1] = val
+    chosen[count][1][4] = val
 
     doc =document.getElementById(elem.target.id);
     
@@ -460,37 +462,12 @@ function PostFuntion(){
     console.log("í submit")
 
     var xhr = new XMLHttpRequest();
-        xhr.open("POST", '/commentsCateg', true);
+        xhr.open("POST", '/commentscateg', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({
             chosen
-        }))
-       ;
-        //xhr.onload('test response')
-        //xhr.send('test body')
-        //console.log(JSON.stringify(chosen))
+        }));
         console.log(chosen)
-  
-     
-     /*   
-        fetch( '/comments', {
-            method : "POST",
-            //body: new FormData(document.getElementById("inputform")),
-            // -- or --
-            header : {'Content-type': 'application/json'},
-            body : JSON.stringify({"value" :"foo"})  
-             //    user : document.getElementById('user').value,
-                // ...
-            
-            
-        }).then(
-            response => response.text() // .json(), etc.
-            // same as function(response) {return response.text();}
-        ).then(
-            html => console.log(html)
-        );
-       */   
-
 }
 
 

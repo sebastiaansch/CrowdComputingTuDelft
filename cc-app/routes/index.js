@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const express = require('express');
 const mongoose = require('mongoose');
 const auth = require('http-auth');
+const await = require('await')
 const { body, validationResult } = require('express-validator/check');
 
 const router = express();
@@ -34,7 +35,7 @@ router.get('/videosRelevance',  (req, res) => {
 
 router.get('/commentscateg',  (req, res) => {
   //CommentModel.find()
-  CommentModel.find({annotation_group_id: 30 },function(err,data){
+  CommentModel.find({annotation_group_id: 40 },function(err,data){
     if(err){
       console.log(err)
     }
@@ -48,24 +49,38 @@ router.get('/commentscateg',  (req, res) => {
 });
 
 router.post('/commentscateg', (req, res) => {
+  console.log("í post aðgerð")
   var data = req.body
+    console.log(data)
  
   for(count=1;count<11;count++){
     var id = data['chosen'][count][0]
     console.log('ID: '+id)
 
-    var value = data['chosen'][count][1]
+    var value = data['chosen'][count][1][1] +" & "+data['chosen'][count][1][2]+" & "+data['chosen'][count][1][3]+" & "+data['chosen'][count][1][4]
     console.log('Value: '+value)
-    if (value != undefined){
+    console.log(data['chosen'][count][1]=="[]" )
+    if (value != "undefined & undefined & undefined & undefined"){
       console.log('uppfæra')
-       
-      CommentModel.findOneAndUpdate({cid: id}, {annotation1: value},function(err,data) {
-        console.log("Hello there!!");
-        console.log(data)
-      }) 
-      
+      noAnnotations=0
+      CommentModel.findOne({cid: id}, function (err, comment) {
+        if(err){
+          console.log('error')
+        } else{
+          noAnnotations=Object.keys(comment.category_annotations).length
+          newField ="category_annotations."+String(noAnnotations+1)
+          var myquery =  {$set:{[newField]:value} }
+         
+          CommentModel.findOneAndUpdate({cid: id}, myquery ,function(err,data) {
+            if(err){
+            console.log('error')
+          } else{
+            console.log(data)
+          }
+          }) 
+        }
+      });
     }
-   
   }
   res.render('./', {
     title: 'index page',
@@ -76,7 +91,7 @@ router.post('/commentscateg', (req, res) => {
 
 router.get('/commentsjoke',  (req, res) => {
   //CommentModel.find()
-  CommentModel.find({annotation_group_id: 30 },function(err,data){
+  CommentModel.find({annotation_group_id: 40 },function(err,data){
     if(err){
       console.log(err)
     }
@@ -90,8 +105,10 @@ router.get('/commentsjoke',  (req, res) => {
 });
 
 router.post('/commentsjoke', (req, res) => {
+  console.log("joke - post")
   var data = req.body
- /*
+    console.log(data)
+ 
   for(count=1;count<11;count++){
     var id = data['chosen'][count][0]
     console.log('ID: '+id)
@@ -100,23 +117,35 @@ router.post('/commentsjoke', (req, res) => {
     console.log('Value: '+value)
     if (value != undefined){
       console.log('uppfæra')
-       
-      CommentModel.findOneAndUpdate({cid: id}, {annotation1: value},function(err,data) {
-        console.log("Hello there!!");
-        console.log(data)
-      }) 
+      noAnnotations=0
+      
+      CommentModel.findOne({cid: id}, function (err, comment) {
+        if(err){
+          console.log('error')
+        } else{
+          noAnnotations=Object.keys(comment.joke_annotations).length
+          newField ="joke_annotations."+String(noAnnotations+1)
+          var myquery =  {$set:{[newField]:value} }
+         
+          CommentModel.findOneAndUpdate({cid: id}, myquery ,function(err,data) {
+            if(err){
+            console.log('error')
+          } else{
+            console.log(data)
+          }
+          }) 
+        }
+      });
       
     }
-  
   }
-  */  
   res.render('./', {
     title: 'index page',
   });
 })
 router.get('/commentsopinion',  (req, res) => {
   //CommentModel.find()
-  CommentModel.find({annotation_group_id: 30 },function(err,data){
+  CommentModel.find({annotation_group_id: 40 },function(err,data){
     if(err){
       console.log(err)
     }
@@ -130,8 +159,10 @@ router.get('/commentsopinion',  (req, res) => {
 });
 
 router.post('/commentsopinion', (req, res) => {
+  console.log("joke - post")
   var data = req.body
- /*
+    console.log(data)
+ 
   for(count=1;count<11;count++){
     var id = data['chosen'][count][0]
     console.log('ID: '+id)
@@ -140,16 +171,28 @@ router.post('/commentsopinion', (req, res) => {
     console.log('Value: '+value)
     if (value != undefined){
       console.log('uppfæra')
-       
-      CommentModel.findOneAndUpdate({cid: id}, {annotation1: value},function(err,data) {
-        console.log("Hello there!!");
-        console.log(data)
-      }) 
+      noAnnotations=0
+      
+      CommentModel.findOne({cid: id}, function (err, comment) {
+        if(err){
+          console.log('error')
+        } else{
+          noAnnotations=Object.keys(comment.opinion_annotations).length
+          newField ="opinion_annotations."+String(noAnnotations+1)
+          var myquery =  {$set:{[newField]:value} }
+         
+          CommentModel.findOneAndUpdate({cid: id}, myquery ,function(err,data) {
+            if(err){
+            console.log('error')
+          } else{
+            console.log(data)
+          }
+          }) 
+        }
+      });
       
     }
-  
   }
-  */  
   res.render('./', {
     title: 'index page',
   });

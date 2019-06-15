@@ -21,8 +21,16 @@ const commentSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  annotation1: {
-    type: String,
+  category_annotations: {
+    type: {},
+    trim: true,
+  },
+  opinion_annotations: {
+    type: {},
+    trim: true,
+  },
+  joke_annotations: {
+    type: {},
     trim: true,
   },
  

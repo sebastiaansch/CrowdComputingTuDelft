@@ -20,7 +20,9 @@
 
 db.comments.update( {}, {$set:{"annotation_group_id":0}}, false, true)
 db.comments.update( {}, {$set:{"annotation_done":0}}, false, true)
-db.comments.update( {}, {$set:{"annotation1":0}}, false, true)
+db.comments.update( {}, {$set:{"category_annotations":{}}}, false, true)
+db.comments.update( {}, {$set:{"joke_annotations":{}}}, false, true)
+db.comments.update( {}, {$set:{"opinion_annotations":{}}}, false, true)
 
 ## mongo.js
 then I updated the annotation_group and grouped 10 and 10 together.. needs to be thought through since all the comments that are grouped together now are of the same video.

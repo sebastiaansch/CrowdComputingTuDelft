@@ -7,13 +7,15 @@ block content
   if comments.length
    
     -var counter=0
+    -prevVideo =null
     each comment in comments 
       -counter+=1
       p.h4 Task #{counter}
-      
-      iframe(type='text/html' width='640' height='390'
-      src='http://www.youtube.com/embed/'+ comment.video_id+'?=1&origin=http://example.com'
-      frameborder='0')
+      -if(!(prevVideo==comment.video_id))
+        iframe(type='text/html' width='640' height='390'
+        src='http://www.youtube.com/embed/'+ comment.video_id+'?=1&origin=http://example.com'
+        frameborder='0')
+      -prevVideo=comment.video_id
       div.container(id ="commentInfo"+counter) 
         p.h6 Comment can be read here below:
         p(id =comment.cid)
