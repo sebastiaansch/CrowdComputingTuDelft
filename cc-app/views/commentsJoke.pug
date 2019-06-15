@@ -7,26 +7,26 @@ block content
   if comments.length
    
     -var counter=0
+    -prevVideo =null
     each comment in comments 
       -counter+=1
-      
-      iframe(type='text/html' width='640' height='390'
-      src='http://www.youtube.com/embed/'+ comment.video_id+'?=1&origin=http://example.com'
-      frameborder='0')
+      p.h4 Task #{counter}
+      -if(!(prevVideo==comment.video_id))
+        iframe(type='text/html' width='640' height='390'
+        src='http://www.youtube.com/embed/'+ comment.video_id+'?=1&origin=http://example.com'
+        frameborder='0')
+      -prevVideo=comment.video_id
       div.container(id ="commentInfo"+counter) 
-        p Comment can be read here below:
+        p.h6 Comment can be read here below:
         p(id =comment.cid)
-        p=  comment.text
-        p Question
-            div.row(id="mainDiv)") 
-            input(type="button",  value="Joke",id="joke" + counter,class="btn btn-light") 
-            |  
-
-            input(type="button",  value="Not Joke",id="noJoke" + counter,class="btn btn-light") 
-            |
-
+        p(class="greytext") #{comment.text}
+        p.h6 Question
+        input(type="button", value="Joke",id="joke" + counter,class="btn btn-light") 
+        |  
+        input(type="button", value="Not Joke",id="nojoke" + counter,class="btn btn-light") 
+        |
+      <br>
   
-    //some random input to be able to send a value 
 
     input(
       type="button",value="Submit results", class="btn btn-lg btn-primary btn-block",id="submitButton"
@@ -51,8 +51,5 @@ block content
   else
     p No registrations yet :(
 
-  script
-    console.log(document.maleClick)
-    console.log(document.getElementById('test1'.innerText))
- 
-    
+
+  script(src="/js/commentJokeAssist.js")

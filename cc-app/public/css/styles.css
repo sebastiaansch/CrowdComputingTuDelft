@@ -65,7 +65,9 @@ body {
   #personDiv{
     background-color:#e3e3e3;
   }
-
+  .greytext{
+    color:grey;
+  } 
   
 
   #person1 {
