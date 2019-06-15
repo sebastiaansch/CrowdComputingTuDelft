@@ -21,7 +21,7 @@ where *youtube* is the name of your database.
 ## Launch the database
 We now launch the database by running :
 
-<<<<<<< HEAD
+<<<<<<< variant A
 ```shell
 mongod --dbpath /path/to/where/the/data/will/be/stored
 ```
@@ -42,6 +42,12 @@ db.comments.update( {}, {$set:{"annotation_done":0}}, false, true)
 db.comments.update( {}, {$set:{"annotation1":0}}, false, true)  
 db.videos.update( {}, {$set:{"annotation1":0}}, false, true)  
 
+db.comments.update( {}, {$set:{"annotation_group_id":0}}, false, true)
+db.comments.update( {}, {$set:{"annotation_done":0}}, false, true)
+db.comments.update( {}, {$set:{"category_annotations":{}}}, false, true)
+db.comments.update( {}, {$set:{"joke_annotations":{}}}, false, true)
+db.comments.update( {}, {$set:{"opinion_annotations":{}}}, false, true)
+
 ### Then we update these new fields
 This is done by launching the mongo.js file with the following commands (assuming that you've run `npm install` before) :  
 
@@ -60,11 +66,4 @@ npm run watch
 
 ## Access the website
 You can access the index page of the different task here : http://localhost:3000
-=======
-db.comments.update( {}, {$set:{"annotation_group_id":0}}, false, true)
-db.comments.update( {}, {$set:{"annotation_done":0}}, false, true)
-db.comments.update( {}, {$set:{"category_annotations":{}}}, false, true)
-db.comments.update( {}, {$set:{"joke_annotations":{}}}, false, true)
-db.comments.update( {}, {$set:{"opinion_annotations":{}}}, false, true)
->>>>>>> 5a5db6cb01028512e80c76f23fe39e1579b19f16
 
