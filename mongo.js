@@ -36,7 +36,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017',function(err,db){
                 console.log(counter)    
                 console.log(groupCounter)
                 console.log(result[counter]["_id"])
-                /*
+                
                 var myquery = { _id: result[counter]["_id"] };
                 var newvalues = { $set: {annotation_group_id: groupCounter} };
                 database.collection("comments").updateOne(myquery, newvalues, function(err, res) {
@@ -44,8 +44,8 @@ MongoClient.connect('mongodb://127.0.0.1:27017',function(err,db){
                     console.log("1 document updated");
                     //db.close();
                   });
-                  */
-                  counter+=1;
+                  
+                counter+=1;
               });    
          
         });
