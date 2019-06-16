@@ -94,6 +94,7 @@ router.post('/commentscateg', async (req, res) => {
               console.log('error')
             } else{
               console.log(data)
+              resolve(data)
             }
             }) 
           }
@@ -137,6 +138,7 @@ router.post('/commentsjoke',async (req, res) => {
     var value = data['chosen'][count][1]
     console.log('Value: '+value)
     if (value != undefined){
+      console.log('update')
       noAnnotations=0
       var myPromise = () => {return new Promise((resolve, reject) => {
         CommentModel.findOne({cid: id}, function (err, comment) {
@@ -152,13 +154,14 @@ router.post('/commentsjoke',async (req, res) => {
               console.log('error')
             } else{
               console.log(data)
+              resolve(data)
             }
           }) 
         }
       });
-    })
-    }
-    var result = await myPromise() 
+      })
+      }
+      var result = await myPromise() 
     }
   }
   res.render('./', {
@@ -205,6 +208,7 @@ router.post('/commentsopinion', async (req, res) => {
               console.log('error')
             } else{
               console.log(data)
+              resolve(data)
             }
           }) 
         }
