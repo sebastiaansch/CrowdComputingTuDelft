@@ -21,7 +21,6 @@ where *youtube* is the name of your database.
 ## Launch the database
 We now launch the database by running :
 
-<<<<<<< variant A
 ```shell
 mongod --dbpath /path/to/where/the/data/will/be/stored
 ```
@@ -37,16 +36,17 @@ mongorestore path/to/dump
 
 ## Before launching the server, some changes need to be done in the database (it can be quite long be careful)
 ### First, we need to create the fields that will be used by launching these command in the mongo shell environment.
-db.comments.update( {}, {$set:{"annotation_group_id":0}}, false, true)  
-db.comments.update( {}, {$set:{"annotation_done":0}}, false, true)  
-db.comments.update( {}, {$set:{"annotation1":0}}, false, true)  
-db.videos.update( {}, {$set:{"annotation1":0}}, false, true)  
 
-db.comments.update( {}, {$set:{"annotation_group_id":0}}, false, true)
-db.comments.update( {}, {$set:{"annotation_done":0}}, false, true)
-db.comments.update( {}, {$set:{"category_annotations":{}}}, false, true)
-db.comments.update( {}, {$set:{"joke_annotations":{}}}, false, true)
-db.comments.update( {}, {$set:{"opinion_annotations":{}}}, false, true)
+```shell
+db.comments.update( {}, {$set:{"annotation_group_id":0}}, false, true)  
+db.videos.update( {}, {$set:{"annotation_group_id":0}}, false, true)  
+db.comments.update( {}, {$set:{"annotation_done":0}}, false, true)  
+db.comments.update( {}, {$set:{"category_annotations":{}}}, false, true)  
+db.comments.update( {}, {$set:{"joke_annotations":{}}}, false, true)  
+db.comments.update( {}, {$set:{"opinion_annotations":{}}}, false, true)  
+db.videos.update( {}, {$set:{"relevant_annotations":{}}}, false, true)  
+db.videos.update( {}, {$set:{"live_annotations":{}}}, false, true)  
+```
 
 ### Then we update these new fields
 This is done by launching the mongo.js file with the following commands (assuming that you've run `npm install` before) :  
