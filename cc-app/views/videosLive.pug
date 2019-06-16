@@ -1,7 +1,7 @@
 extends layout
 
 block content   
-  -console.log("video relevancy - layout")
+  -console.log("video live - layout")
 
 
   if videos.length
@@ -17,13 +17,13 @@ block content
       frameborder='0')
       
       div.container(id ="videoInfo"+counter) 
-        p.h6 The query can be read below:
+        //p.h6 can be read below:
         p(id =video.video_id)
-        p(class="greytext") #{video.video_query}
-        p.h6 Question
-        input(type="button", value="Relevant",id="relevant" + counter,class="btn btn-light") 
+        //p(class="greytext") #{video.video_query}
+        p.h6 Is the video a live performance ?
+        input(type="button", value="Live",id="live" + counter,class="btn btn-light") 
         |  
-        input(type="button", value="Not Relevant",id="norelevant" + counter,class="btn btn-light") 
+        input(type="button", value="Not Live",id="nolive" + counter,class="btn btn-light") 
         |
       <br>
   
@@ -51,4 +51,4 @@ block content
   else
     p No registrations yet :(
 
-  script(src="/js/videosRelevancyAssist.js")
+  script(src="/js/videosLiveAssist.js")

@@ -17,7 +17,18 @@ const videoSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-
+  annotation_group_id: {
+    type: Number,
+    trim: true,
+  },
+  relevant_annotations: {
+    type: {},
+    trim: true
+  },
+  live_annotations: {
+    type: {},
+    trim: true
+  },
 });
 
 module.exports = mongoose.model('videos', videoSchema);

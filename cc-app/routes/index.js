@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 router.get('/videosRelevance',  (req, res) => { 
   //search by some random value to get few videos
-  VideoModel.find({video_views: 43874 },function(err,data){
+  VideoModel.find({annotation_group_id: 52 },function(err,data){
     if(err){
       console.log(err)
     }
@@ -28,6 +28,22 @@ router.get('/videosRelevance',  (req, res) => {
   .then((videos) => {
     //console.log(videos)
     res.render('videos', { title: 'Listing videos', videos });
+  })
+    .catch(() => { res.send('Sorry! Something went wrong.'); });
+});
+
+
+router.get('/videosLive',  (req, res) => { 
+  //search by some random value to get few videos
+  VideoModel.find({annotation_group_id: 52 },function(err,data){
+    if(err){
+      console.log(err)
+    }
+    //console.log(data)
+  })
+  .then((videos) => {
+    //console.log(videos)
+    res.render('videosLive', { title: 'Listing videos', videos });
   })
     .catch(() => { res.send('Sorry! Something went wrong.'); });
 });
@@ -207,12 +223,89 @@ router.post('/commentsopinion', async (req, res) => {
   });
 })
 
-router.post('/videos', (req, res) => {
- 
-  console.log(res.body)
-  console.log(req.body)
-  console.log('hallo post')
 
+
+router.post('/videosRelevance', async (req, res) => {
+
+
+  var data = req.body
+ 
+  for(count=1;count<11;count++){
+    console.log(count)
+    var id = data['chosen'][count][0]
+    console.log('ID: '+id)
+
+    var value = data['chosen'][count][1]
+    console.log('Value: '+value)
+    if (value != undefined){
+      noAnnotations=0
+      var myPromise = () => {return new Promise((resolve, reject) => {
+        VideoModel.findOne({video_id: id}, function (err, video) {
+          if(err){
+            console.log('error')
+          } else{
+            noAnnotations=Object.keys(video.relevant_annotations).length
+            newField ="relevant_annotations."+String(noAnnotations+1)
+            var myquery =  {$set:{[newField]:value} }
+          
+            VideoModel.findOneAndUpdate({video_id: id}, myquery ,function(err,data) {
+              if(err){
+              console.log('error')
+            } else{
+                console.log(data)
+                resolve(data)
+            }
+          }) 
+        }
+      });
+    })
+    }
+    var result = await myPromise()   
+    }
+  }
+  res.render('./', {
+    title: 'index page',
+  });
+ 
+})
+
+router.post('/videosLive', async (req, res) => {
+ 
+ var data = req.body
+ 
+  for(count=1;count<11;count++){
+    console.log(count)
+    var id = data['chosen'][count][0]
+    console.log('ID: '+id)
+
+    var value = data['chosen'][count][1]
+    console.log('Value: '+value)
+    if (value != undefined){
+      noAnnotations=0
+      var myPromise = () => {return new Promise((resolve, reject) => {
+        VideoModel.findOne({video_id: id}, function (err, video) {
+          if(err){
+            console.log('error')
+          } else{
+            noAnnotations=Object.keys(video.relevant_annotations).length
+            newField ="live_annotations."+String(noAnnotations+1)
+            var myquery =  {$set:{[newField]:value} }
+          
+            VideoModel.findOneAndUpdate({video_id: id}, myquery ,function(err,data) {
+              if(err){
+              console.log('error')
+            } else{
+                console.log(data)
+                resolve(data)
+            }
+          }) 
+        }
+      });
+    })
+    }
+    var result = await myPromise()   
+    }
+  }
   res.render('./', {
     title: 'index page',
   });
