@@ -2,16 +2,76 @@ extends layout
 
 block content
 
+  h1 Classicfy - Comment Categorization
+
   -console.log("comments categor - layout")
 
   if comments.length
    
     -var counter=0
     -prevVideo =null
+    p.h4 Instructions
+    p(class="greytext") For this task we are doing a comment classification task. Each of the comments that are named were posted to the video shown above. Try and determine which of the categories the comment belongs too.<br><br>Steps
+      <br>1. Read the comment
+      <br>2. Watch the video    
+      <br>3. Determine the related categories
+      <br><br>Rules & Tips
+      <br>You can tick multiple boxes, a comment can belong to multiple categories. If you think no category can be ascribed to it, click on "Non related". If you think we should include another category that is relevant, please type it in the textbox. But if you propose another category you must also choose some category that you deem most relevant.
+      <br> Make sure to read the explanations of the categories so you understand what they represent.
+      <br><br>
+      input(type="button", value="Show Category Explanations ",id="gategorydescriptionbutton",class="btn btn-light")
+      div(id="gategorydescription",class="lighbluetext")
+        p.h5 Understanding the categories
+        <br>4 main parent categories: Person, Music, Consumption and Non Related.
+        <br>  <br>
+        p.h6 Person: all the data associated with an existing, real-life person.
+
+        p Artist: holds other subcategories of artist types.
+          <br>User: Youtube users
+          <br>Other: prominent figures of our society that dont fall under the category of "Artist".
+          <br><br>-The following are the subcategories for "Artist"-
+          <br>Composer: the person that creates the music.
+          <br>Related Composer: the person that creates related music or is somehow related to the video.
+          <br>Performer: the person who perfomrs the music.
+          <br>Related Performer: the person who perfomrs related music or is somehow related to the video.
+          <br>Related Artist: should capture all other the people related to arts.
+
+        <br><br>
+        p.h6 Music: all the data that refers to classical music composition and its performance
+        p Music Piece: as the creation of a composer
+          <br>Interpretation: as in the interpretation of performers.
+          <br><br>-The following are the subcategories for "Music Piece"-
+          <br>Composition: written music piece of the classical music video
+          <br>Related Composition: music piece written by the same or related composer as the one in the video.
+          <br>Genre: captures all data that refers to classical music as a whole
+          <br>Related Genre: other music genres 
+          <br><br>-The following are the subcategories for "Interpretation"-
+          <br>Performance: data that refers to the performance of the music video.
+          <br>Related performance: performance in a related mussic video of same or related music piece.
+        <br><br>
+        p.h6 Consumption: comments about how people interact with the media.
+        p User Context: how the user listens to music
+          <br>Parallel Activities: activities that the users do while watching the video (e.g. studying, working,..)
+          <br>User: other users on Youtube
+          <br>Experience: includes memories and emtions triggered by the video
+          <br>Platform Related: referrs to the social media platform
+          <br> Media: if the comment related to any aspect of a Youtube Video
+          <br><br>-The following are subcategories for "User"
+          <br>Original poster: if it refers to the user that uploaded the video.
+          <br>User General: other users
+          <br><br>-The following are subcategories for "Platform Related"
+          <br>Media Host:if content refers to Youtube
+          <br>Related Media host: if the content refers to other platform.
+          <br><br>-The following are subcategories for "Media"
+          <br>Post Content: if it refers to the video being looked at.
+          <br>Related Content:if it related to something else.
+
+        p.h6 Non Relevant: any content that does not dall in the previous classification is not relevant.
+        
     each comment in comments 
       -counter+=1
       
-      p.h4 Task #{counter}
+      p.h4 Choose the relevant class for comment #{counter}
       -if(!(prevVideo==comment.video_id))
         iframe(type='text/html' width='640' height='390'
         src='http://www.youtube.com/embed/'+ comment.video_id+'?=1&origin=http://example.com'
@@ -111,7 +171,9 @@ block content
             input(type="button",  value="Related Content",id="consumptionMediaRelatedContentPick" + counter,class="btn  btn-sm btn-light")
         div(class ="col ", id ='nonRelatedDiv')
           input(type="button",  value="Non Related",id="nonRelatedPick" + counter,class="btn  btn-light")
-
+        div
+          p Extra category: 
+            input(type="input",id ="extra"+counter,value ="")
   
     //some random input to be able to send a value 
 

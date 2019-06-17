@@ -59,8 +59,12 @@ for(count=1;count<11;count++){
     //nonRelated
     document.getElementById("nonRelatedPick"+count).addEventListener("click",(elem) =>nonRelatedFunction('nonRelated',elem))
 
+    document.getElementById("extra"+count).addEventListener("click",(elem) =>extraFunction('nonRelated',elem))
+    
+
    };
 document.getElementById("submitButton").addEventListener("click",(elem) => PostFuntion());
+document.getElementById("gategorydescriptionbutton").addEventListener("click",(elem) =>descriptionFunction(elem))
 
 /*
 function commentInfofunction(elem){
@@ -448,7 +452,33 @@ function nonRelatedFunction(val,elem) {
         document.getElementById("personArtist"+count).style.visibility="hidden"    
     }
   }
+  function descriptionFunction(elem){
+    console.log("description function ") 
+    doc =document.getElementById(elem.target.id);
 
+    if (doc.classList.contains("btn-light")){
+        document.getElementById("gategorydescriptionbutton").classList.add("btn-primary");
+        document.getElementById("gategorydescriptionbutton").classList.remove("btn-light");
+        document.getElementById("gategorydescription").style.display="block"
+    }
+    
+    else if (doc.classList.contains("btn-primary")){
+        document.getElementById("gategorydescriptionbutton").classList.remove("btn-primary");
+        document.getElementById("gategorydescriptionbutton").classList.add("btn-light");
+        document.getElementById("gategorydescription").style.display="none"
+    }
+  
+   
+}
+
+function extraFunction (val,elem) {
+    count = elem.target.id.match(/\d+/)[0] // "3"
+    chosen[count][1][5] = val
+
+    doc =document.getElementById(elem.target.id);
+    console.log(chosen)
+
+}
 function setLightClass(id){
         document.getElementById(id).classList.remove("btn-success");
         document.getElementById(id).classList.add("btn-light");
@@ -460,6 +490,8 @@ function setGreenClass(id){
 
 function PostFuntion(){
     console.log("í submit")
+
+    console.log(document.getElementById("extra1").val())
 
     var xhr = new XMLHttpRequest();
         xhr.open("POST", '/commentscateg', true);

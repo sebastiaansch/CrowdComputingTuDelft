@@ -1,16 +1,21 @@
 extends layout
 
 block content   
+  h1 Classicfy - Video Relevance
   -console.log("video relevancy - layout")
 
-
+   p.h4 Instructions
+    p(class="greytext") There is a lot of classical music on Youtube. Sometimes, it is difficult to match the correct video to a query done by the user due to the plethora of different covers and different specificity in naming. Therefore we have designed a task to determine the relevance of a query with respect to the video.
+      <br><br>Steps <br>1. Watch the video at a few timesteps through the video.<br>2. Determine whether the video is relevant for the given search query.
+      <br><br>Rules & Tips<br>Cases where it is not relevant: When it is a cover with a different interpretation, a different song, a different artist.<br>Cases where the video is relevant: When the video contains the music from the artist in the search query (whether it is live or not does not matter)
+    
   if videos.length
    
     -var counter=0
     //-prevVideo =null
     each video in videos 
       -counter+=1
-      p.h4 Task #{counter}
+      p.h4  Judge whether video #{counter} is relevant to the query
      
       iframe(type='text/html' width='640' height='390'
       src='http://www.youtube.com/embed/'+ video.video_id+'?=1&origin=http://example.com'
@@ -19,6 +24,8 @@ block content
       div.container(id ="videoInfo"+counter) 
         p.h6 The query can be read below:
         p(id =video.video_id)
+        input(type="button", value="Video Description ",id="videodescriptionbutton" + counter,class="btn btn-light")
+        p(id="videodescription"+ counter,class="lighbluetext") #{video.video_description} 
         p(class="greytext") #{video.video_query}
         p.h6 Question
         input(type="button", value="Relevant",id="relevant" + counter,class="btn btn-light") 

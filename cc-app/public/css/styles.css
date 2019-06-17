@@ -68,7 +68,45 @@ body {
   .greytext{
     color:grey;
   } 
+  .lighbluetext{
+    color:blue;
+  } 
   
+  #gategorydescription{
+    display:none;
+  }
+  #videodescription1{
+    display: none;
+  }
+  #videodescription2{
+    display: none;
+  }
+  #videodescription3{
+    display: none;
+  }
+  #videodescription4{
+    display: none;
+  }
+  #videodescription5{
+    display: none;
+  }
+  #videodescription6{
+    display: none;
+  }
+  #videodescription7{
+    display: none;
+  }
+  #videodescription8{
+    display: none;
+  }
+  #videodescription9{
+    display: none;
+  }
+  #videodescription10{
+    display: none;
+  }
+
+
 
   #person1 {
    

@@ -52,7 +52,7 @@ router.get('/videosLive',  (req, res) => {
 
 router.get('/commentscateg',  (req, res) => {
   //CommentModel.find()
-  CommentModel.find({annotation_group_id: 40 },function(err,data){
+  CommentModel.find({annotation_group_id: 50 },function(err,data){
     if(err){
       console.log(err)
     }
@@ -113,7 +113,7 @@ router.post('/commentscateg', async (req, res) => {
 
 router.get('/commentsjoke',  (req, res) => {
   //CommentModel.find()
-  CommentModel.find({annotation_group_id: 40 },function(err,data){
+  CommentModel.find({annotation_group_id: 2 },function(err,data){
     if(err){
       console.log(err)
     }
@@ -164,13 +164,20 @@ router.post('/commentsjoke',async (req, res) => {
       var result = await myPromise() 
     }
   }
-  res.render('./', {
-    title: 'index page',
+  //res.render('./', {
+  //  title: 'index page',
+  //});
+  router.get("/", (req, res) => {
+    res.render("homepage");
   });
+  
+  console.log('render')
+  //res.redirect('/');
+  //res.end();
 })
 router.get('/commentsopinion',  (req, res) => {
   //CommentModel.find()
-  CommentModel.find({annotation_group_id: 40 },function(err,data){
+  CommentModel.find({annotation_group_id: 50 },function(err,data){
     if(err){
       console.log(err)
     }
