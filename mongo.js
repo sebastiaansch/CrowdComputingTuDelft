@@ -49,6 +49,50 @@ MongoClient.connect('mongodb://127.0.0.1:27017',function(err,db){
               });    
          
         });
+
+        
+        // Modify the videos
+        var videoIds = [];
+    
+        database.collection("videos").find({}).toArray(function(err,result) {
+            //console.log(result);
+            if (err) throw err;
+            console.log(result.length)
+            counter = 0;
+            result.forEach(function(value){
+               //console.log(value);
+               videoIds.push(result[counter]["video_id"]);
+               //console.log(videoIds);
+               counter += 1
+               //console.log(counter)
+            });
+
+            //console.log(videoIds);
+            shuffleArray(videoIds);
+            //console.log(videoIds)
+            console.log(videoIds)
+
+
+            counter = 0
+            groupCounter =0
+            videoIds.slice(1,50000).forEach(function(value){
+                console.log(value)
+                if ((counter%10)==0) groupCounter+=1
+
+                var myquery = { video_id: value };
+                var newvalues = { $set: {"annotation_group_id": groupCounter} };
+
+                console.log()
+                database.collection("videos").updateOne(myquery, newvalues, function(err, res) {
+                    if (err) throw err;
+                    console.log("1 document updated");
+                    //db.close();
+                });
+
+                counter += 1
+                
+            })
+        });
         
         
     }
