@@ -7,7 +7,7 @@ block content
   p.h4 Instructions
   p(class="greytext") There is a lot of classical music on Youtube. 
       <br><br>Steps 
-      <br>1. Watch the video at a few timesteps through the video.
+      <br>1. Watch the video at a few timesteps through the video - the nearest video above is relevant to he comment . 
       <br>2. Determine whether the video is a live perfomance or not.
 
   if videos.length
@@ -16,6 +16,7 @@ block content
     //-prevVideo =null
     each video in videos 
       -counter+=1
+      <br>
       p.h4 Judge whether video #{counter} is a performed live or not
      
       iframe(type='text/html' width='640' height='390'
@@ -26,7 +27,7 @@ block content
         //p.h6 can be read below:
         p(id =video.video_id)
         //p(class="greytext") #{video.video_query}
-        p.h6 Is the video a live performance ?
+        p.h6 Is the video above a live performance ?
         input(type="button", value="Live",id="live" + counter,class="btn btn-light") 
         |  
         input(type="button", value="Not Live",id="nolive" + counter,class="btn btn-light") 

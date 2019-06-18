@@ -76,6 +76,7 @@ function commentInfofunction(elem){
 function personFunction(val,elem) {
     count = elem.target.id.match(/\d+/)[0] // "3"
     chosen[count][1][1] = val
+    console.log(chosen)
     
     doc =document.getElementById(elem.target.id);
 
@@ -84,21 +85,43 @@ function personFunction(val,elem) {
     
     if (doc.classList.contains("btn-success")){
         setLightClass(elem.target.id)
-        setLightClass("personArtistPick"+count)
-        setLightClass("personUserPick"+count)
-        setLightClass("personOtherPick"+count)
-        setLightClass("personArtistComposerPick"+count)
-        setLightClass("personArtistRelatedComposerPick"+count)
-        setLightClass("personArtistPerformerPick"+count)
-        setLightClass("personArtistRelatedPerformerPick"+count)
-        setLightClass("personArtistRelatedArtistPick"+count)
-        if (val =='person'){
+        if (val =='person') {
+            setLightClass("personArtistPick"+count)
+            setLightClass("personUserPick"+count)
+            setLightClass("personOtherPick"+count)
+            setLightClass("personArtistComposerPick"+count)
+            setLightClass("personArtistRelatedComposerPick"+count)
+            setLightClass("personArtistPerformerPick"+count)
+            setLightClass("personArtistRelatedPerformerPick"+count)
+            setLightClass("personArtistRelatedArtistPick"+count)
             document.getElementById("person"+count).style.visibility="hidden"
             document.getElementById("personArtist"+count).style.visibility="hidden"
         }
+
+        else if (val =='person artist') {
+            setLightClass("personArtistComposerPick"+count)
+            setLightClass("personArtistRelatedComposerPick"+count)
+            setLightClass("personArtistPerformerPick"+count)
+            setLightClass("personArtistRelatedPerformerPick"+count)
+            setLightClass("personArtistRelatedArtistPick"+count)
+            document.getElementById("personArtist"+count).style.visibility="hidden"
+        }
+        // setLightClass("personArtistPick"+count)
+        // setLightClass("personUserPick"+count)
+        // setLightClass("personOtherPick"+count)
+        // setLightClass("personArtistComposerPick"+count)
+        // setLightClass("personArtistRelatedComposerPick"+count)
+        // setLightClass("personArtistPerformerPick"+count)
+        // setLightClass("personArtistRelatedPerformerPick"+count)
+        // setLightClass("personArtistRelatedArtistPick"+count)
+ 
     }
     else if (doc.classList.contains("btn-light")){
         setGreenClass(elem.target.id)
+        if (val =='person artist') {
+            document.getElementById("personArtist"+count).style.visibility="visible"
+
+        }
 
     }
     
@@ -113,67 +136,69 @@ function personFunction(val,elem) {
     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
     */
     if (val =='person user'){
-        document.getElementById("personArtist"+count).style.visibility="hidden"
+    //document.getElementById("personArtist"+count).style.visibility="hidden"
 
-        setLightClass("personOtherPick"+count)
-        setLightClass("personArtistPick"+count)
-        setLightClass("personArtistComposerPick"+count)
-        setLightClass("personArtistRelatedComposerPick"+count)
-        setLightClass("personArtistPerformerPick"+count)
-        setLightClass("personArtistRelatedPerformerPick"+count)
-        setLightClass("personArtistRelatedArtistPick"+count)
+        // setLightClass("personOtherPick"+count)
+        // setLightClass("personArtistPick"+count)
+        // setLightClass("personArtistComposerPick"+count)
+        // setLightClass("personArtistRelatedComposerPick"+count)
+        // setLightClass("personArtistPerformerPick"+count)
+        // setLightClass("personArtistRelatedPerformerPick"+count)
+        // setLightClass("personArtistRelatedArtistPick"+count)
     }
+   
     if (val =='person artist') {
-        document.getElementById("personArtist"+count).style.visibility="visible"
+        //document.getElementById("personArtist"+count).style.visibility="visible"
 
-        setLightClass("personOtherPick"+count)
-        setLightClass("personUserPick"+count)
+        // setLightClass("personOtherPick"+count)
+        // setLightClass("personUserPick"+count)
     }
-    if (val =='person other'){
-        document.getElementById("personArtist"+count).style.visibility="hidden"
 
-        setLightClass("personArtistPick"+count)
-        setLightClass("personUserPick"+count)
-        setLightClass("personArtistComposerPick"+count)
-        setLightClass("personArtistRelatedComposerPick"+count)
-        setLightClass("personArtistPerformerPick"+count)
-        setLightClass("personArtistRelatedPerformerPick"+count)
-        setLightClass("personArtistRelatedArtistPick"+count)
+    if (val =='person other'){
+        //document.getElementById("personArtist"+count).style.visibility="hidden"
+
+        // setLightClass("personArtistPick"+count)
+        // setLightClass("personUserPick"+count)
+        // setLightClass("personArtistComposerPick"+count)
+        // setLightClass("personArtistRelatedComposerPick"+count)
+        // setLightClass("personArtistPerformerPick"+count)
+        // setLightClass("personArtistRelatedPerformerPick"+count)
+        // setLightClass("personArtistRelatedArtistPick"+count)
     }   
     
-    if (val =='person artist composer'){
-        setLightClass("personArtistRelatedComposerPick"+count)
-        setLightClass("personArtistPerformerPick"+count)
-        setLightClass("personArtistRelatedPerformerPick"+count)
-        setLightClass("personArtistRelatedArtistPick"+count)
-    }
+    // if (val =='person artist composer'){
+    //     setLightClass("personArtistRelatedComposerPick"+count)
+    //     setLightClass("personArtistPerformerPick"+count)
+    //     setLightClass("personArtistRelatedPerformerPick"+count)
+    //     setLightClass("personArtistRelatedArtistPick"+count)
+    // }
 
-    if (val =='person artist relatedComposer'){
-        setLightClass("personArtistComposerPick"+count)
-        setLightClass("personArtistPerformerPick"+count)
-        setLightClass("personArtistRelatedPerformerPick"+count)
-        setLightClass("personArtistRelatedArtistPick"+count)
-    }
+    // if (val =='person artist relatedComposer'){
+    //     setLightClass("personArtistComposerPick"+count)
+    //     setLightClass("personArtistPerformerPick"+count)
+    //     setLightClass("personArtistRelatedPerformerPick"+count)
+    //     setLightClass("personArtistRelatedArtistPick"+count)
+    // }
 
-    if (val =='person artist performer'){
-        setLightClass("personArtistComposerPick"+count)
-        setLightClass("personArtistRelatedComposerPick"+count)
-        setLightClass("personArtistRelatedPerformerPick"+count)
-        setLightClass("personArtistRelatedArtistPick"+count)
-    }
+    // if (val =='person artist performer'){
+    //     setLightClass("personArtistComposerPick"+count)
+    //     setLightClass("personArtistRelatedComposerPick"+count)
+    //     setLightClass("personArtistRelatedPerformerPick"+count)
+    //     setLightClass("personArtistRelatedArtistPick"+count)
+    // }
 
-    if (val =='person artist relatedPerformer'){
-        setLightClass("personArtistComposerPick"+count)
-        setLightClass("personArtistRelatedComposerPick"+count)
-        setLightClass("personArtistPerformerPick"+count)
-        setLightClass("personArtistRelatedArtistPick"+count)
-    }
-    if (val =='person artist relatedArtist'){
-        setLightClass("personArtistComposerPick"+count)
-        setLightClass("personArtistRelatedComposerPick"+count)
-        setLightClass("personArtistPerformerPick"+count)
-        setLightClass("personArtistRelatedPerformerPick"+count)
-    }
+    // if (val =='person artist relatedPerformer'){
+    //     setLightClass("personArtistComposerPick"+count)
+    //     setLightClass("personArtistRelatedComposerPick"+count)
+    //     setLightClass("personArtistPerformerPick"+count)
+    //     setLightClass("personArtistRelatedArtistPick"+count)
+    // }
+    // if (val =='person artist relatedArtist'){
+    //     setLightClass("personArtistComposerPick"+count)
+    //     setLightClass("personArtistRelatedComposerPick"+count)
+    //     setLightClass("personArtistPerformerPick"+count)
+    //     setLightClass("personArtistRelatedPerformerPick"+count)
+    // }
 }
 
 function musicFunction(val,elem) {
@@ -186,22 +211,43 @@ function musicFunction(val,elem) {
 
     if (doc.classList.contains("btn-success")){
         setLightClass(elem.target.id)
-        setLightClass("musicPiecePick"+count)
-        setLightClass("musicInterpretationPick"+count)
-        setLightClass("musicPieceCompositionPick"+count)
-        setLightClass("musicPieceRelatedCompositionPick"+count)
-        setLightClass("musicPieceGenrePick"+count)
-        setLightClass("musicPieceRelatedGenrePick"+count)
-        setLightClass("musicInterpretationRelatedPerformancePick"+count)
-        setLightClass("musicInterpretationPerformancePick"+count)
         if (val =='music'){
             document.getElementById("music"+count).style.visibility="hidden"
             document.getElementById("musicInterpretation"+count).style.visibility="hidden"
             document.getElementById("musicPiece"+count).style.visibility="hidden"
+            setLightClass("musicPiecePick"+count)
+            setLightClass("musicInterpretationPick"+count)
+            setLightClass("musicPieceCompositionPick"+count)
+            setLightClass("musicPieceRelatedCompositionPick"+count)
+            setLightClass("musicPieceGenrePick"+count)
+            setLightClass("musicPieceRelatedGenrePick"+count)
+            setLightClass("musicInterpretationRelatedPerformancePick"+count)
+            setLightClass("musicInterpretationPerformancePick"+count)
+        }
+        else if (val =='music piece'){
+            document.getElementById("musicPiece"+count).style.visibility="hidden"
+            setLightClass("musicPiecePick"+count)
+            setLightClass("musicPieceCompositionPick"+count)
+            setLightClass("musicPieceRelatedCompositionPick"+count)
+            setLightClass("musicPieceGenrePick"+count)
+            setLightClass("musicPieceRelatedGenrePick"+count)
+        }
+        else if (val =='music interpretation'){
+           
+            document.getElementById("musicInterpretation"+count).style.visibility="hidden"
+            setLightClass("musicInterpretationPick"+count)
+            setLightClass("musicInterpretationRelatedPerformancePick"+count)
+            setLightClass("musicInterpretationPerformancePick"+count)
         }
     }
     else if (doc.classList.contains("btn-light")){
         setGreenClass(elem.target.id)
+        if (val =='music piece') {
+            document.getElementById("musicPiece"+count).style.visibility="visible"
+        }
+        else if (val =='music interpretation') {
+            document.getElementById("musicInterpretation"+count).style.visibility="visible"
+        }
     }
 
 
@@ -214,51 +260,51 @@ function musicFunction(val,elem) {
     document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
     */
-    if (val =='music piece'){
-        document.getElementById("musicPiece"+count).style.visibility="visible"
-        document.getElementById("musicInterpretation"+count).style.visibility="hidden"
+    // if (val =='music piece'){
+    //     document.getElementById("musicPiece"+count).style.visibility="visible"
+    //     document.getElementById("musicInterpretation"+count).style.visibility="hidden"
 
-        setLightClass("musicInterpretationPick"+count)
-        setLightClass("musicInterpretationRelatedPerformancePick"+count)
-        setLightClass("musicInterpretationPerformancePick"+count)
-    }
-    if (val =='music interpretation'){
-        document.getElementById("musicInterpretation"+count).style.visibility="visible"
-        document.getElementById("musicPiece"+count).style.visibility="hidden"
+    //     setLightClass("musicInterpretationPick"+count)
+    //     setLightClass("musicInterpretationRelatedPerformancePick"+count)
+    //     setLightClass("musicInterpretationPerformancePick"+count)
+    // }
+    // if (val =='music interpretation'){
+    //     document.getElementById("musicInterpretation"+count).style.visibility="visible"
+    //     document.getElementById("musicPiece"+count).style.visibility="hidden"
 
-        setLightClass("musicPiecePick"+count)
-        setLightClass("musicPieceCompositionPick"+count)
-        setLightClass("musicPieceRelatedCompositionPick"+count)
-        setLightClass("musicPieceGenrePick"+count)
-        setLightClass("musicPieceRelatedGenrePick"+count)
-    }
+    //     setLightClass("musicPiecePick"+count)
+    //     setLightClass("musicPieceCompositionPick"+count)
+    //     setLightClass("musicPieceRelatedCompositionPick"+count)
+    //     setLightClass("musicPieceGenrePick"+count)
+    //     setLightClass("musicPieceRelatedGenrePick"+count)
+    // }
 
-    if(val=='music piece composition'){
-        setLightClass("musicPieceRelatedCompositionPick"+count)
-        setLightClass("musicPieceGenrePick"+count)
-        setLightClass("musicPieceRelatedGenrePick"+count)
-    }
-    if(val=='music piece relatedComposition'){
-        setLightClass("musicPieceCompositionPick"+count)
-        setLightClass("musicPieceGenrePick"+count)
-        setLightClass("musicPieceRelatedGenrePick"+count)
-    }
-    if(val=='music piece genre'){
-        setLightClass("musicPieceCompositionPick"+count)
-        setLightClass("musicPieceRelatedCompositionPick"+count)
-        setLightClass("musicPieceRelatedGenrePick"+count)
-    }
-    if(val=='music piece relatedGenre'){
-        setLightClass("musicPieceCompositionPick"+count)
-        setLightClass("musicPieceRelatedCompositionPick"+count)
-        setLightClass("musicPieceGenrePick"+count)
-    }
-    if(val=='music interpretation performance'){
-        setLightClass("musicInterpretationRelatedPerformancePick"+count)
-    }
-    if(val=='music interpretation relatedPerformance'){
-        setLightClass("musicInterpretationPerformancePick"+count)
-    }
+    // if(val=='music piece composition'){
+    //     setLightClass("musicPieceRelatedCompositionPick"+count)
+    //     setLightClass("musicPieceGenrePick"+count)
+    //     setLightClass("musicPieceRelatedGenrePick"+count)
+    // }
+    // if(val=='music piece relatedComposition'){
+    //     setLightClass("musicPieceCompositionPick"+count)
+    //     setLightClass("musicPieceGenrePick"+count)
+    //     setLightClass("musicPieceRelatedGenrePick"+count)
+    // }
+    // if(val=='music piece genre'){
+    //     setLightClass("musicPieceCompositionPick"+count)
+    //     setLightClass("musicPieceRelatedCompositionPick"+count)
+    //     setLightClass("musicPieceRelatedGenrePick"+count)
+    // }
+    // if(val=='music piece relatedGenre'){
+    //     setLightClass("musicPieceCompositionPick"+count)
+    //     setLightClass("musicPieceRelatedCompositionPick"+count)
+    //     setLightClass("musicPieceGenrePick"+count)
+    // }
+    // if(val=='music interpretation performance'){
+    //     setLightClass("musicInterpretationRelatedPerformancePick"+count)
+    // }
+    // if(val=='music interpretation relatedPerformance'){
+    //     setLightClass("musicInterpretationPerformancePick"+count)
+    // }
 }
 
 
@@ -271,27 +317,60 @@ function consumptionFunction(val,elem) {
 
     if (doc.classList.contains("btn-success")){
         setLightClass(elem.target.id)
-        setLightClass("consumptionUserContextPick"+count)
-        setLightClass("consumptionUserPick"+count)
-        setLightClass("consumptionParallelActivitiesPick"+count)
-        setLightClass("consumptionPlatformRelatedPick"+count)
-        setLightClass("consumptionExperiencePick"+count)
-        setLightClass("consumptionMediaPick"+count)
-        setLightClass("consumptionUserOriginalPosterPick"+count)
-        setLightClass("consumptionUserGeneralPick"+count)
-        setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
-        setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
-        setLightClass("consumptionMediaRelatedContentPick"+count)
-        setLightClass("consumptionMediaPostContentPick"+count)
+
         if (val =='consumption'){
+            setLightClass("consumptionUserContextPick"+count)
+            setLightClass("consumptionUserPick"+count)
+            setLightClass("consumptionParallelActivitiesPick"+count)
+            setLightClass("consumptionPlatformRelatedPick"+count)
+            setLightClass("consumptionExperiencePick"+count)
+            setLightClass("consumptionMediaPick"+count)
+            setLightClass("consumptionUserOriginalPosterPick"+count)
+            setLightClass("consumptionUserGeneralPick"+count)
+            setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
+            setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
+            setLightClass("consumptionMediaRelatedContentPick"+count)
+            setLightClass("consumptionMediaPostContentPick"+count)
+
             document.getElementById("consumption"+count).style.visibility="hidden"
             document.getElementById("consumptionUser"+count).style.visibility="hidden"
             document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
             document.getElementById("consumptionMedia"+count).style.visibility="hidden"
         }
+        else if (val =='consumption user'){
+            setLightClass("consumptionUserPick"+count)      
+            setLightClass("consumptionUserOriginalPosterPick"+count)
+            setLightClass("consumptionUserGeneralPick"+count)
+            document.getElementById("consumptionUser"+count).style.visibility="hidden"
+        }
+        else if (val =='consumption platformRelated'){
+     
+            setLightClass("consumptionPlatformRelatedPick"+count)
+            setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
+            setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
+
+            document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
+        }
+        else if (val =='consumption media'){
+            setLightClass("consumptionMediaPick"+count)
+            setLightClass("consumptionMediaRelatedContentPick"+count)
+            setLightClass("consumptionMediaPostContentPick"+count)
+
+            document.getElementById("consumptionMedia"+count).style.visibility="hidden"
+        }
     }
     else if (doc.classList.contains("btn-light")){
         setGreenClass(elem.target.id)
+        if (val =='consumption user'){
+            document.getElementById("consumptionUser"+count).style.visibility="visible"
+        }
+        else if (val =='consumption platformRelated'){
+
+            document.getElementById("consumptionPlatformRelated"+count).style.visibility="visible"
+        }
+        else if (val =='consumption media'){
+            document.getElementById("consumptionMedia"+count).style.visibility="visible"
+        }
     }
   
     
@@ -303,120 +382,120 @@ function consumptionFunction(val,elem) {
     document.getElementById("musicInterpretation"+count).style.visibility="hidden"
     document.getElementById("musicPiece"+count).style.visibility="hidden"
     */
-    if (val =='consumption userContext'){
-        document.getElementById("consumptionUser"+count).style.visibility="hidden"
-        document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
-        document.getElementById("consumptionMedia"+count).style.visibility="hidden"
+    // if (val =='consumption userContext'){
+    //     document.getElementById("consumptionUser"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
 
        
-        setLightClass("consumptionUserPick"+count)
-        setLightClass("consumptionParallelActivitiesPick"+count)
-        setLightClass("consumptionPlatformRelatedPick"+count)
-        setLightClass("consumptionExperiencePick"+count)
-        setLightClass("consumptionMediaPick"+count)
-        setLightClass("consumptionUserOriginalPosterPick"+count)
-        setLightClass("consumptionUserGeneralPick"+count)
-        setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
-        setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
-        setLightClass("consumptionMediaRelatedContentPick"+count)
-        setLightClass("consumptionMediaPostContentPick"+count)
-    }
-    if (val =='consumption user'){
-        document.getElementById("consumptionUser"+count).style.visibility="visible"
-        document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
-        document.getElementById("consumptionMedia"+count).style.visibility="hidden"
-        setLightClass("consumptionUserContextPick"+count)
-        setLightClass("consumptionParallelActivitiesPick"+count)
-        setLightClass("consumptionPlatformRelatedPick"+count)
-        setLightClass("consumptionExperiencePick"+count)
-        setLightClass("consumptionMediaPick"+count)
+    //     setLightClass("consumptionUserPick"+count)
+    //     setLightClass("consumptionParallelActivitiesPick"+count)
+    //     setLightClass("consumptionPlatformRelatedPick"+count)
+    //     setLightClass("consumptionExperiencePick"+count)
+    //     setLightClass("consumptionMediaPick"+count)
+    //     setLightClass("consumptionUserOriginalPosterPick"+count)
+    //     setLightClass("consumptionUserGeneralPick"+count)
+    //     setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
+    //     setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
+    //     setLightClass("consumptionMediaRelatedContentPick"+count)
+    //     setLightClass("consumptionMediaPostContentPick"+count)
+    // }
+    // if (val =='consumption user'){
+    //     document.getElementById("consumptionUser"+count).style.visibility="visible"
+    //     document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
+    //     setLightClass("consumptionUserContextPick"+count)
+    //     setLightClass("consumptionParallelActivitiesPick"+count)
+    //     setLightClass("consumptionPlatformRelatedPick"+count)
+    //     setLightClass("consumptionExperiencePick"+count)
+    //     setLightClass("consumptionMediaPick"+count)
 
-        setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
-        setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
-        setLightClass("consumptionMediaRelatedContentPick"+count)
-        setLightClass("consumptionMediaPostContentPick"+count)
+    //     setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
+    //     setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
+    //     setLightClass("consumptionMediaRelatedContentPick"+count)
+    //     setLightClass("consumptionMediaPostContentPick"+count)
         
-    }
-    if (val =='consumption parallelActivities'){
-        document.getElementById("consumptionUser"+count).style.visibility="hidden"
-        document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
-        document.getElementById("consumptionMedia"+count).style.visibility="hidden"
-        setLightClass("consumptionUserContextPick"+count)
-        setLightClass("consumptionUserPick"+count)
-        setLightClass("consumptionPlatformRelatedPick"+count)
-        setLightClass("consumptionExperiencePick"+count)
-        setLightClass("consumptionMediaPick"+count)
-        setLightClass("consumptionUserOriginalPosterPick"+count)
-        setLightClass("consumptionUserGeneralPick"+count)
-        setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
-        setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
-        setLightClass("consumptionMediaRelatedContentPick"+count)
-        setLightClass("consumptionMediaPostContentPick"+count)
-    }
-    if (val =='consumption platformRelated'){
-        document.getElementById("consumptionUser"+count).style.visibility="hidden"
-        document.getElementById("consumptionPlatformRelated"+count).style.visibility="visible"
-        document.getElementById("consumptionMedia"+count).style.visibility="hidden"
-        setLightClass("consumptionUserContextPick"+count)
-        setLightClass("consumptionUserPick"+count)
-        setLightClass("consumptionParallelActivitiesPick"+count)
-        setLightClass("consumptionExperiencePick"+count)
-        setLightClass("consumptionMediaPick"+count)
-        setLightClass("consumptionUserOriginalPosterPick"+count)
-        setLightClass("consumptionUserGeneralPick"+count)
-        setLightClass("consumptionMediaRelatedContentPick"+count)
-        setLightClass("consumptionMediaPostContentPick"+count)
-    }
-    if (val =='consumption experience'){
-        document.getElementById("consumptionUser"+count).style.visibility="hidden"
-        document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
-        document.getElementById("consumptionMedia"+count).style.visibility="hidden"
-        setLightClass("consumptionUserContextPick"+count)
-        setLightClass("consumptionUserPick"+count)
-        setLightClass("consumptionParallelActivitiesPick"+count)
-        setLightClass("consumptionPlatformRelatedPick"+count)
-        setLightClass("consumptionMediaPick"+count)
-        setLightClass("consumptionUserOriginalPosterPick"+count)
-        setLightClass("consumptionUserGeneralPick"+count)
-        setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
-        setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
-        setLightClass("consumptionMediaRelatedContentPick"+count)
-        setLightClass("consumptionMediaPostContentPick"+count)
-    }
-    if (val =='consumption media'){
-        document.getElementById("consumptionUser"+count).style.visibility="hidden"
-        document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
-        document.getElementById("consumptionMedia"+count).style.visibility="visible"
-        setLightClass("consumptionUserContextPick"+count)
-        setLightClass("consumptionUserPick"+count)
-        setLightClass("consumptionParallelActivitiesPick"+count)
-        setLightClass("consumptionPlatformRelatedPick"+count)
-        setLightClass("consumptionExperiencePick"+count)
-        setLightClass("consumptionUserOriginalPosterPick"+count)
-        setLightClass("consumptionUserGeneralPick"+count)
-        setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
-        setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
+    // }
+    // if (val =='consumption parallelActivities'){
+    //     document.getElementById("consumptionUser"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
+    //     setLightClass("consumptionUserContextPick"+count)
+    //     setLightClass("consumptionUserPick"+count)
+    //     setLightClass("consumptionPlatformRelatedPick"+count)
+    //     setLightClass("consumptionExperiencePick"+count)
+    //     setLightClass("consumptionMediaPick"+count)
+    //     setLightClass("consumptionUserOriginalPosterPick"+count)
+    //     setLightClass("consumptionUserGeneralPick"+count)
+    //     setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
+    //     setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
+    //     setLightClass("consumptionMediaRelatedContentPick"+count)
+    //     setLightClass("consumptionMediaPostContentPick"+count)
+    // }
+    // if (val =='consumption platformRelated'){
+    //     document.getElementById("consumptionUser"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionPlatformRelated"+count).style.visibility="visible"
+    //     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
+    //     setLightClass("consumptionUserContextPick"+count)
+    //     setLightClass("consumptionUserPick"+count)
+    //     setLightClass("consumptionParallelActivitiesPick"+count)
+    //     setLightClass("consumptionExperiencePick"+count)
+    //     setLightClass("consumptionMediaPick"+count)
+    //     setLightClass("consumptionUserOriginalPosterPick"+count)
+    //     setLightClass("consumptionUserGeneralPick"+count)
+    //     setLightClass("consumptionMediaRelatedContentPick"+count)
+    //     setLightClass("consumptionMediaPostContentPick"+count)
+    // }
+    // if (val =='consumption experience'){
+    //     document.getElementById("consumptionUser"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionMedia"+count).style.visibility="hidden"
+    //     setLightClass("consumptionUserContextPick"+count)
+    //     setLightClass("consumptionUserPick"+count)
+    //     setLightClass("consumptionParallelActivitiesPick"+count)
+    //     setLightClass("consumptionPlatformRelatedPick"+count)
+    //     setLightClass("consumptionMediaPick"+count)
+    //     setLightClass("consumptionUserOriginalPosterPick"+count)
+    //     setLightClass("consumptionUserGeneralPick"+count)
+    //     setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
+    //     setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
+    //     setLightClass("consumptionMediaRelatedContentPick"+count)
+    //     setLightClass("consumptionMediaPostContentPick"+count)
+    // }
+    // if (val =='consumption media'){
+    //     document.getElementById("consumptionUser"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionPlatformRelated"+count).style.visibility="hidden"
+    //     document.getElementById("consumptionMedia"+count).style.visibility="visible"
+    //     setLightClass("consumptionUserContextPick"+count)
+    //     setLightClass("consumptionUserPick"+count)
+    //     setLightClass("consumptionParallelActivitiesPick"+count)
+    //     setLightClass("consumptionPlatformRelatedPick"+count)
+    //     setLightClass("consumptionExperiencePick"+count)
+    //     setLightClass("consumptionUserOriginalPosterPick"+count)
+    //     setLightClass("consumptionUserGeneralPick"+count)
+    //     setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
+    //     setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
 
-    }
+    // }
 
-    if(val=='consumption user general'){
-        setLightClass("consumptionUserOriginalPosterPick"+count)
-    }
-    if(val=='consumption user originalPoster'){
-        setLightClass("consumptionUserGeneralPick"+count)
-    }
-    if(val=='consumption platformRelated mediaHost'){
-        setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
-    }
-    if(val=='consumption platformRelated relatedMediaHost'){
-        setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
-    }
-    if(val=='consumption media postContent'){
-        setLightClass("consumptionMediaRelatedContentPick"+count)
-    }
-    if(val=='consumption media relatedContent'){
-        setLightClass("consumptionMediaPostContentPick"+count)
-    }
+    // if(val=='consumption user general'){
+    //     setLightClass("consumptionUserOriginalPosterPick"+count)
+    // }
+    // if(val=='consumption user originalPoster'){
+    //     setLightClass("consumptionUserGeneralPick"+count)
+    // }
+    // if(val=='consumption platformRelated mediaHost'){
+    //     setLightClass("consumptionPlatformRelatedRelatedMediaHostPick"+count)
+    // }
+    // if(val=='consumption platformRelated relatedMediaHost'){
+    //     setLightClass("consumptionPlatformRelatedMediaHostPick"+count)
+    // }
+    // if(val=='consumption media postContent'){
+    //     setLightClass("consumptionMediaRelatedContentPick"+count)
+    // }
+    // if(val=='consumption media relatedContent'){
+    //     setLightClass("consumptionMediaPostContentPick"+count)
+    // }
   
 }
 

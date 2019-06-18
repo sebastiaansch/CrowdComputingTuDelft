@@ -7,7 +7,7 @@ block content
    p.h4 Instructions
     p(class="gretext") For this task we are doing a comment classification task. Each of the comments that are named were posted to the video shown above. Try and determineif the comment is a joke or not<br><br>Steps
       <br>1. Read the comment
-      <br>2. Watch the video    
+      <br>2. Watch the video - the nearest video above is relevant to he comment      
       <br>3. Determine if the comment is a joke or not
 
   if comments.length
@@ -16,6 +16,7 @@ block content
     -prevVideo =null
     each comment in comments 
       -counter+=1
+      <br>
       p.h4 Judge whether comment #{counter} is a joke or not
       -if(!(prevVideo==comment.video_id))
         iframe(type='text/html' width='640' height='390'
